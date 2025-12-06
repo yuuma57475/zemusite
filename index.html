@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zemu Network | マインクラフト公式サイト</title>
+  <meta name="description" content="Zemu Network はみんなで遊べるマインクラフトサーバー。参加方法、ルール、最新情報はこちら。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="server-icon.png" type="image/png" sizes="any">
+  <link rel="icon" href="server-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="server-icon.png">
+  <meta property="og:image" content="server-icon.png">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Zemu Network ホーム"><img src="server-icon.png" onerror="this.onerror=null;this.src='server-icon.svg'" class="brand-logo" alt=""> <span>Zemu Network</span></a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <div class="lang-switch">
+          <select id="langSelect" aria-label="言語選択">
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="ko">한국어</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="masthead">
+    <div class="container mast-inner">
+      <div class="mast-left">
+        <div class="pill">
+          <div class="pill-count" id="playCount">-</div>
+          <div class="pill-label">
+            <div class="pill-title" data-i18n="mast.playNow">PLAY NOW</div>
+            <button class="pill-link" id="copyIpTop" data-i18n="mast.copyIp">COPY IP</button>
+          </div>
+        </div>
+      </div>
+      <div class="mast-center">
+        <div class="logo-word">ZEMU NETWORK</div>
+        <div class="logo-sub" data-i18n="mast.subtitle">RULE YOUR OWN GAME</div>
+      </div>
+      <div class="mast-right">
+        <div class="pill">
+          <div class="pill-count" id="discordCount">—</div>
+          <div class="pill-label">
+            <div class="pill-title" data-i18n="mast.discord">DISCORD</div>
+            <a class="pill-link" href="https://discord.com/invite/GqxKuRmTPw" target="_blank" rel="noopener" data-i18n="mast.joinNow">JOIN NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="tabbar" aria-label="サイトタブ">
+      <div class="container">
+        <ul class="tabs">
+          <li class="active"><a href="index.html" data-i18n="tab.home">HOME</a></li>
+          <li><a href="forums.html" data-i18n="tab.forums">FORUMS</a></li>
+          <li><a href="store.html" data-i18n="tab.store">STORE</a></li>
+          <li><a href="wiki.html" data-i18n="tab.wiki">WIKI</a></li>
+          <li><a href="support.html" data-i18n="tab.support">SUPPORT</a></li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+
+  <main id="home">
+    <section class="hero animate-fade-up">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1><span data-i18n="hero.title">PVPがメインのネットワーク</span> <span class="accent">Zemu Network</span></h1>
+          <p class="lead" data-i18n="hero.lead">対戦に特化した高速で安定したサーバー</p>
+          <div class="pvp-badge" data-i18n="badge.pvp">PVP MAIN</div>
+          <div class="server-card" data-protocol="eagler" data-host="ws://star.ssnetwork.io:51026">
+            <div class="server-title" data-i18n="join.eagler">Eaglercraft</div>
+            <div class="server-row">
+              <span class="label" data-i18n="label.ip">IP</span>
+              <span class="value ip">ws://star.ssnetwork.io:51026</span>
+              <button class="btn btn-secondary" data-copy data-i18n="button.copy">コピー</button>
+            </div>
+            <div class="server-row">
+              <span class="label" data-i18n="label.status">現在の状態</span>
+              <span class="status-pill">確認中…</span>
+            </div>
+          </div>
+
+          <div class="server-card" data-protocol="minecraft" data-host="star.ssnetwork.io:39797">
+            <div class="server-title" data-i18n="join.java">Java版</div>
+            <div class="server-row">
+              <span class="label" data-i18n="label.ip">IP</span>
+              <span class="value ip">star.ssnetwork.io:39797</span>
+              <button class="btn btn-secondary" data-copy data-i18n="button.copy">コピー</button>
+            </div>
+            <div class="server-row">
+              <span class="label" data-i18n="label.version">対応バージョン</span>
+              <span class="value version-badge">1.21.x</span>
+            </div>
+            <div class="server-row">
+              <span class="label" data-i18n="label.status">現在の状態</span>
+              <span class="status-pill">確認中…</span>
+            </div>
+          </div>
+          <div class="cta">
+            <a class="btn btn-primary" href="#join" data-i18n="cta.joinNow">今すぐ参加する</a>
+            <a class="btn btn-outline" href="https://discord.com/invite/GqxKuRmTPw" target="_blank" rel="noopener" data-i18n="cta.joinDiscord">Discord に参加</a>
+          </div>
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-label">オンライン</div>
+              <div id="statPlayers" class="stat-value">-</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">バージョン</div>
+              <div id="statVersion" class="stat-value">1.21.x</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">IP</div>
+              <div id="statIp" class="stat-value">star.ssnetwork.io:39797</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Ping</div>
+              <div id="statPing" class="stat-value">- ms</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.news">お知らせ</h2>
+        <div class="post-card">
+          <div class="date-badge"><div class="month">MAY</div><div class="day">31</div></div>
+          <div class="post-cover"></div>
+          <div class="post-body">
+            <div class="post-title">BREAKING THE BOUNDARIES</div>
+            <div class="post-meta">May 31, 2025 ・ ZemuTeam ・ 1,499</div>
+            <div class="post-excerpt">新しいハードウェアでネットワークを強化しました。高パフォーマンスの構成に移行し、ラグの改善と安定性の向上を実現しました。</div>
+          </div>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <h3>冬のイベント開催</h3>
+            <p>12/20 20:00 から雪合戦イベントを開催します。景品あり。</p>
+          </article>
+          <article class="news-item">
+            <h3>建築コンテスト結果</h3>
+            <p>11 月の建築コンテスト受賞者を <a href="#community">コミュニティページ</a> に掲載しました。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" class="section alt animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.join">参加方法</h2>
+        <div class="steps two-cols">
+          <div>
+            <div class="version-badge" data-i18n="join.eagler">Eaglercraft</div>
+            <ol class="steps">
+              <li data-i18n="join.eg.s1">ブラウザ版クライアントを起動</li>
+              <li data-i18n="join.eg.s2">サーバー一覧で ws://star.ssnetwork.io:51026 を追加</li>
+              <li data-i18n="join.eg.s3">選択して接続</li>
+            </ol>
+          </div>
+          <div>
+            <div class="version-badge" data-i18n="join.java">Java版</div>
+            <ol class="steps">
+              <li data-i18n="join.java.s1">ゲームを 1.21.x に設定</li>
+              <li data-i18n="join.java.s2">マルチプレイで star.ssnetwork.io:39797 を追加</li>
+              <li data-i18n="join.java.s3">一覧から選んで接続</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note">接続できない場合は Discord で質問してください。</div>
+      </div>
+    </section>
+
+    <section id="rules" class="section animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.rules">ルール</h2>
+        <ul class="rules">
+          <li>他人の建築やチェストを壊さない</li>
+          <li>チート、荒らし、迷惑行為の禁止</li>
+          <li>不具合やバグは報告する</li>
+          <li>チャットでは丁寧な言葉遣いを心がける</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="community" class="section alt animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.community">コミュニティ</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Discord</h3>
+            <p>連絡、質問、募集は Discord が便利です。</p>
+            <a class="btn btn-secondary" href="https://discord.com/invite/GqxKuRmTPw" target="_blank" rel="noopener">参加する</a>
+          </div>
+          <div class="card">
+            <h3>イベント</h3>
+            <p>毎月ミニゲームや建築コンテストを開催しています。</p>
+          </div>
+          <div class="card">
+            <h3>経済・保護</h3>
+            <p>ショップや保護プラグインで安心して遊べます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gamemodes" class="section animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.gamemodes">ゲームモード</h2>
+        <div class="mode-grid">
+          <div class="mode-card">
+            <div class="mode-title">サバイバル</div>
+            <div class="mode-desc">王道のサバイバル。保護・経済で安心。</div>
+          </div>
+          <div class="mode-card">
+            <div class="mode-title">イベント</div>
+            <div class="mode-desc">建築コンテストやミニゲームを定期開催。</div>
+          </div>
+          <div class="mode-card">
+            <div class="mode-title">コミュニティ</div>
+            <div class="mode-desc">Discord連携で交流・募集が簡単。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leaderboards" class="section alt animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.leaderboards">ランキング</h2>
+        <p class="lead">近日公開。ゲーム内の各種ランキングをサイトで表示予定です。</p>
+        <div class="cta"><a class="btn btn-outline" href="#">準備中</a></div>
+      </div>
+    </section>
+
+    <section id="credits" class="section animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.credits">クレジット</h2>
+        <p class="lead">ランクのギフトやアイテム交換に使えるクレジット機能を準備中です。</p>
+        <div class="cta"><a class="btn btn-secondary" href="#">準備中</a></div>
+      </div>
+    </section>
+
+    <section id="faq" class="section animate-fade-up">
+      <div class="container">
+        <h2 data-i18n="section.faq">FAQ</h2>
+        <details>
+          <summary>参加は無料ですか？</summary>
+          <p>はい、無料です。寄付は任意です。</p>
+        </details>
+        <details>
+          <summary>推奨リソースパックはありますか？</summary>
+          <p>現在は指定ありません。好みで導入してください。</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 Zemu Network</div>
+      <div class="small">非公式の Mojang/Microsoft 関連ではありません。</div>
+    </div>
+  </footer>
+
+  <div class="cookie-bar" id="cookieBar">
+    <div class="cookie-text">This site uses cookies to help personalise content, tailor your experience and to keep you logged in if you register.</div>
+    <div class="cookie-actions">
+      <button class="btn btn-primary" id="cookieAccept">ACCEPT</button>
+      <a class="btn btn-outline" href="#">LEARN MORE...</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

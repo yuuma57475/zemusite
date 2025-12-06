@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zemu Network | ストア</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="server-icon.png" type="image/png" sizes="any">
+  <link rel="icon" href="server-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="server-icon.png">
+  <meta property="og:image" content="server-icon.png">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Zemu Network ホーム"><img src="server-icon.png" onerror="this.onerror=null;this.src='server-icon.svg'" class="brand-logo" alt=""> <span>Zemu Network</span></a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <div class="lang-switch">
+          <select id="langSelect" aria-label="言語選択">
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="ko">한국어</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="masthead">
+    <div class="container mast-inner">
+      <div class="mast-left">
+        <div class="pill">
+          <div class="pill-count" id="playCount">-</div>
+          <div class="pill-label">
+            <div class="pill-title" data-i18n="mast.playNow">PLAY NOW</div>
+            <button class="pill-link" id="copyIpTop" data-i18n="mast.copyIp">COPY IP</button>
+          </div>
+        </div>
+      </div>
+      <div class="mast-center">
+        <div class="logo-word">ZEMU NETWORK</div>
+        <div class="logo-sub" data-i18n="mast.subtitle">RULE YOUR OWN GAME</div>
+      </div>
+      <div class="mast-right">
+        <div class="pill">
+          <div class="pill-count" id="discordCount">—</div>
+          <div class="pill-label">
+            <div class="pill-title" data-i18n="mast.discord">DISCORD</div>
+            <a class="pill-link" href="https://discord.com/invite/GqxKuRmTPw" target="_blank" rel="noopener" data-i18n="mast.joinNow">JOIN NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="tabbar" aria-label="サイトタブ">
+      <div class="container">
+        <ul class="tabs">
+          <li><a href="index.html" data-i18n="tab.home">HOME</a></li>
+          <li><a href="forums.html" data-i18n="tab.forums">FORUMS</a></li>
+          <li class="active"><a href="store.html" data-i18n="tab.store">STORE</a></li>
+          <li><a href="wiki.html" data-i18n="tab.wiki">WIKI</a></li>
+          <li><a href="support.html" data-i18n="tab.support">SUPPORT</a></li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+
+  <main class="animate-fade-up">
+    <section class="section section-tight">
+      <div class="container">
+        <h2 data-i18n="tab.store">ストア</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Ranks</h3>
+            <p class="lead">Nobility / Prime / King</p>
+            <a class="btn btn-secondary" href="store-ranks.html">見る</a>
+          </div>
+          <div class="card">
+            <h3>Fast Builder</h3>
+            <p class="lead">エメラルドパック</p>
+            <a class="btn btn-secondary" href="store-fastbuilder.html">見る</a>
+          </div>
+          <div class="card">
+            <h3>KitPvP</h3>
+            <p class="lead">Boosters / Coins / EXP / Kit Unlocker</p>
+            <a class="btn btn-secondary" href="store-kitpvp.html">見る</a>
+          </div>
+        </div>
+        <div class="cta"><span class="version-badge">ThePit/BedWars/SkyWars Shop Coming Soon</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© 2025 Zemu Network</div>
+      <div class="small">非公式の Mojang/Microsoft 関連ではありません。</div>
+    </div>
+  </footer>
+
+  <div class="cookie-bar" id="cookieBar">
+    <div class="cookie-text">This site uses cookies to help personalise content, tailor your experience and to keep you logged in if you register.</div>
+    <div class="cookie-actions">
+      <button class="btn btn-primary" id="cookieAccept">ACCEPT</button>
+      <a class="btn btn-outline" href="#">LEARN MORE...</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
