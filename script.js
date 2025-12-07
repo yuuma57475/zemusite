@@ -28,8 +28,8 @@ const i18n = {
     'tab.store': 'ストア',
     'tab.wiki': 'ウィキ',
     'tab.support': 'サポート',
-    'hero.title': 'PVPがメインのネットワーク',
-    'hero.lead': '対戦に特化した高速で安定したサーバー',
+    'hero.title': 'Eaglercraftでも快適に遊べる',
+    'hero.lead': 'Eaglercraftでも公平に楽しむことができるサーバー',
     'badge.pvp': 'PVP MAIN',
     'label.ip': 'IP',
     'label.version': '対応バージョン',
@@ -50,13 +50,16 @@ const i18n = {
     'join.eg.s2': 'サーバー一覧で ws://star.ssnetwork.io:51026 を追加',
     'join.eg.s3': '選択して接続',
     'join.java.s1': 'ゲームを 1.21.x に設定',
-    'join.java.s2': 'マルチプレイで star.ssnetwork.io:39797 を追加',
+    'join.java.s2': 'マルチプレイで s1.ssnetwork.io:46322 を追加',
     'join.java.s3': '一覧から選んで接続',
     'status.online': 'オンライン',
     'status.offline': 'オフライン',
     'status.unknown': '不明',
+    'status.maintenance': '現在メンテナンス中です',
     'button.copy': 'コピー',
     'button.copied': 'コピー済み'
+    ,'page.preparing': '準備中'
+    ,'page.preparing.desc': '公開まで今しばらくお待ちください。'
   },
   en: {
     'mast.playNow': 'Play Now',
@@ -100,13 +103,16 @@ const i18n = {
     'join.eg.s2': 'Add ws://star.ssnetwork.io:51026 in server list',
     'join.eg.s3': 'Select and connect',
     'join.java.s1': 'Set game to 1.21.x',
-    'join.java.s2': 'Add star.ssnetwork.io:39797 in Multiplayer',
+    'join.java.s2': 'Add s1.ssnetwork.io:46322 in Multiplayer',
     'join.java.s3': 'Select and connect',
     'status.online': 'Online',
     'status.offline': 'Offline',
     'status.unknown': 'Unknown',
+    'status.maintenance': 'Currently under maintenance',
     'button.copy': 'Copy',
     'button.copied': 'Copied'
+    ,'page.preparing': 'Preparing'
+    ,'page.preparing.desc': 'Please wait while we prepare the content.'
   },
   zh: {
     'mast.playNow': '开始游戏',
@@ -150,13 +156,16 @@ const i18n = {
     'join.eg.s2': '在服务器列表添加 ws://star.ssnetwork.io:51026',
     'join.eg.s3': '选择并连接',
     'join.java.s1': '将游戏设置为 1.21.x',
-    'join.java.s2': '在多人游戏添加 star.ssnetwork.io:39797',
+    'join.java.s2': '在多人游戏添加 s1.ssnetwork.io:46322',
     'join.java.s3': '选择并连接',
     'status.online': '在线',
     'status.offline': '离线',
     'status.unknown': '未知',
+    'status.maintenance': '维护中',
     'button.copy': '复制',
     'button.copied': '已复制'
+    ,'page.preparing': '准备中'
+    ,'page.preparing.desc': '内容正在准备中，请稍候。'
   },
   ko: {
     'mast.playNow': '지금 플레이',
@@ -200,13 +209,16 @@ const i18n = {
     'join.eg.s2': '서버 목록에 ws://star.ssnetwork.io:51026 추가',
     'join.eg.s3': '선택 후 접속',
     'join.java.s1': '게임을 1.21.x로 설정',
-    'join.java.s2': '멀티플레이에 star.ssnetwork.io:39797 추가',
+    'join.java.s2': '멀티플레이에 s1.ssnetwork.io:46322 추가',
     'join.java.s3': '목록에서 선택 후 접속',
     'status.online': '온라인',
     'status.offline': '오프라인',
     'status.unknown': '알 수 없음',
+    'status.maintenance': '현재 점검 중',
     'button.copy': '복사',
     'button.copied': '복사됨'
+    ,'page.preparing': '준비 중'
+    ,'page.preparing.desc': '콘텐츠 준비 중입니다. 잠시만 기다려 주세요.'
   },
   ar: {
     'mast.playNow': 'البدء الآن',
@@ -250,13 +262,16 @@ const i18n = {
     'join.eg.s2': 'أضف ws://star.ssnetwork.io:51026 إلى قائمة الخوادم',
     'join.eg.s3': 'اختر واتصل',
     'join.java.s1': 'اضبط اللعبة على 1.21.x',
-    'join.java.s2': 'أضف star.ssnetwork.io:39797 في تعدد اللاعبين',
+    'join.java.s2': 'أضف s1.ssnetwork.io:46322 في تعدد اللاعبين',
     'join.java.s3': 'اختر واتصل',
     'status.online': 'متصل',
     'status.offline': 'غير متصل',
     'status.unknown': 'غير معروف',
+    'status.maintenance': 'قيد الصيانة حاليًا',
     'button.copy': 'نسخ',
     'button.copied': 'تم النسخ'
+    ,'page.preparing': 'قيد التحضير'
+    ,'page.preparing.desc': 'يرجى الانتظار بينما نُحضّر المحتوى.'
   }
 };
 
@@ -312,40 +327,187 @@ function playClickSound() {
   } catch {}
 }
 
+async function copyText(str) {
+  try {
+    await navigator.clipboard.writeText(str);
+    return true;
+  } catch {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = str;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      ta.style.left = '0';
+      ta.style.top = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch {}
+      document.body.removeChild(ta);
+      return ok;
+    } catch {
+      return false;
+    }
+  }
+}
+
+let particleLayer = document.querySelector('.particle-layer');
+if (!particleLayer) {
+  particleLayer = document.createElement('div');
+  particleLayer.className = 'particle-layer';
+  document.body.appendChild(particleLayer);
+}
+let particles = [];
+let particlesRunning = false;
+let lastTime = 0;
+function createSeeds(x, y, count) {
+  const seeds = [];
+  for (let i = 0; i < count; i++) {
+    const shard = i % 5 === 0;
+    const size = shard ? 6 + Math.random() * 8 : 4 + Math.random() * 8;
+    const vx = (Math.random() * 140 - 70);
+    const vy = -(140 + Math.random() * 200);
+    seeds.push({ x, y, vx, vy, rot: Math.random() * 360, vr: (Math.random() * 120 - 60), life: 1, shard, w: size, h: shard ? size * 0.5 : size });
+  }
+  return seeds;
+}
+function spawnSeeds(seeds) {
+  seeds.forEach((s) => {
+    const el = document.createElement('i');
+    el.className = s.shard ? 'particle-shard' : 'particle-dot';
+    el.style.width = s.w + 'px';
+    el.style.height = s.h + 'px';
+    el.style.transform = `translate3d(${s.x}px, ${s.y}px, 0)`;
+    particleLayer.appendChild(el);
+    particles.push({ el, x: s.x, y: s.y, vx: s.vx, vy: s.vy, rot: s.rot, vr: s.vr, life: s.life, shard: s.shard });
+  });
+  if (!particlesRunning) {
+    particlesRunning = true;
+    lastTime = performance.now();
+    requestAnimationFrame(stepParticles);
+  }
+}
+function spawnParticlesAt(x, y) {
+  const count = 18;
+  for (let i = 0; i < count; i++) {
+    const shard = i % 5 === 0;
+    const el = document.createElement('i');
+    el.className = shard ? 'particle-shard' : 'particle-dot';
+    const size = shard ? 6 + Math.random() * 8 : 4 + Math.random() * 8;
+    el.style.width = size + 'px';
+    el.style.height = (shard ? size * 0.5 : size) + 'px';
+    el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    particleLayer.appendChild(el);
+    const vx = (Math.random() * 140 - 70);
+    const vy = -(140 + Math.random() * 200);
+    particles.push({ el, x, y, vx, vy, rot: Math.random() * 360, vr: (Math.random() * 120 - 60), life: 1, shard });
+  }
+  if (!particlesRunning) {
+    particlesRunning = true;
+    lastTime = performance.now();
+    requestAnimationFrame(stepParticles);
+  }
+}
+function stepParticles(now) {
+  const dt = Math.min(0.033, (now - lastTime) / 1000);
+  lastTime = now;
+  const g = 1600;
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.vy += g * dt;
+    p.vx *= 0.996;
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.rot += p.vr * dt;
+    p.life -= dt * 0.9;
+    if (p.y > window.innerHeight || p.life <= 0) {
+      p.el.remove();
+      particles.splice(i, 1);
+    } else {
+      p.el.style.opacity = String(Math.max(0, p.life));
+      p.el.style.transform = `translate3d(${p.x}px, ${p.y}px, 0) rotate(${p.shard ? p.rot : 0}deg)`;
+    }
+  }
+  if (particles.length) {
+    requestAnimationFrame(stepParticles);
+  } else {
+    particlesRunning = false;
+  }
+}
 document.addEventListener('pointerdown', (e) => {
-  const el = e.target.closest('a, button, .btn, .nav-toggle, .tabs a, .pill-link, [data-copy]');
-  if (el) playClickSound();
+  const el = e.target.closest('a, button, .btn, .nav-toggle, .tabs a, .pill-link, [data-copy], summary');
+  if (!el) return;
+  playClickSound();
+  const x = e.clientX, y = e.clientY;
+  spawnParticlesAt(x, y);
+  const href = el.tagName === 'A' ? el.getAttribute('href') : null;
+  const tgt = el.tagName === 'A' ? el.getAttribute('target') : null;
+  if (href && tgt !== '_blank') {
+    try {
+      const seeds = createSeeds(x, y, 18);
+      sessionStorage.setItem('pendingParticles', JSON.stringify({ t: Date.now(), seeds }));
+    } catch {}
+  }
 });
 
 document.addEventListener('click', (e) => {
   const el = e.target.closest('.btn, .pill-link, .tabs a, .nav-toggle, [data-copy]');
   if (!el) return;
-  const rect = el.getBoundingClientRect();
-  const s = document.createElement('span');
-  s.className = 'ripple';
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  s.style.left = x + 'px';
-  s.style.top = y + 'px';
-  el.appendChild(s);
-  setTimeout(() => s.remove(), 500);
 });
 
+try {
+  const saved = sessionStorage.getItem('pendingParticles');
+  if (saved) {
+    const obj = JSON.parse(saved);
+    if (obj && Array.isArray(obj.seeds)) {
+      spawnSeeds(obj.seeds);
+    }
+    sessionStorage.removeItem('pendingParticles');
+  }
+} catch {}
+
+[
+  '.server-card',
+  '.stats .stat-card',
+  '.cards .card',
+  '.mode-card',
+  '.news-item',
+  'details',
+  '.section',
+  '.cta'
+].forEach((sel) => {
+  document.querySelectorAll(sel).forEach((el) => el.classList.add('animate-fade-up'));
+});
 document.querySelectorAll('.animate-fade-up').forEach((el) => {
   el.classList.remove('animate-in');
 });
 const io = new IntersectionObserver((ents) => {
   ents.forEach((ent) => {
-    if (ent.isIntersecting) ent.target.classList.add('animate-in');
+    if (ent.isIntersecting) {
+      ent.target.classList.add('animate-in');
+    } else {
+      ent.target.classList.remove('animate-in');
+    }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0, rootMargin: '-15% 0px -15% 0px' });
 document.querySelectorAll('.animate-fade-up').forEach((el) => io.observe(el));
+// 初期表示で既にビューポート内の要素にも発火させる
+function inView(el) {
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight && r.bottom > 0;
+}
+document.querySelectorAll('.animate-fade-up').forEach((el) => {
+  if (inView(el)) {
+    requestAnimationFrame(() => el.classList.add('animate-in'));
+  }
+});
 const copyBtn = document.getElementById('copyIp');
 const ipEl = document.getElementById('serverIp');
 if (copyBtn && ipEl) {
   copyBtn.addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText(ipEl.textContent.trim());
+      await copyText(ipEl.textContent.trim());
       copyBtn.textContent = 'コピー済み';
       setTimeout(() => (copyBtn.textContent = 'コピー'), 2000);
     } catch {}
@@ -358,7 +520,7 @@ if (copyTop) {
     try {
       const javaCard = document.querySelector('.server-card[data-protocol="minecraft"]');
       const javaIp = javaCard ? javaCard.querySelector('.ip')?.textContent?.trim() : '';
-      if (javaIp) await navigator.clipboard.writeText(javaIp);
+      if (javaIp) await copyText(javaIp);
     } catch {}
   });
 }
@@ -368,7 +530,7 @@ document.querySelectorAll('[data-copy]').forEach((btn) => {
     try {
       const card = btn.closest('.server-card');
       const ip = card ? card.querySelector('.ip')?.textContent?.trim() : '';
-      if (ip) await navigator.clipboard.writeText(ip);
+      if (ip) await copyText(ip);
       btn.textContent = t('button.copied');
       setTimeout(() => (btn.textContent = t('button.copy')), 2000);
     } catch {}
@@ -387,12 +549,20 @@ document.querySelectorAll('.server-card').forEach((card) => {
     fetch(url)
       .then((r) => r.json())
       .then((data) => {
+        const verStr = typeof data.version === 'string' ? data.version : '';
+        const isMaint = /maintenance/i.test(verStr);
         const online = Boolean(data.online);
-        statusEl.textContent = online ? t('status.online') : t('status.offline');
-        statusEl.classList.remove('status-online', 'status-offline');
-        statusEl.classList.add(online ? 'status-online' : 'status-offline');
-        if (online && data.players && typeof data.players.online === 'number') {
-          statusEl.textContent = `${t('status.online')} (${data.players.online})`;
+        if (isMaint) {
+          statusEl.textContent = t('status.maintenance');
+          statusEl.classList.remove('status-online', 'status-offline');
+          statusEl.classList.add('status-maintenance');
+        } else {
+          statusEl.textContent = online ? t('status.online') : t('status.offline');
+          statusEl.classList.remove('status-online', 'status-offline', 'status-maintenance');
+          statusEl.classList.add(online ? 'status-online' : 'status-offline');
+          if (online && data.players && typeof data.players.online === 'number') {
+            statusEl.textContent = `${t('status.online')} (${data.players.online})`;
+          }
         }
 
         const statPlayers = document.getElementById('statPlayers');
